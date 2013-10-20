@@ -1,0 +1,13 @@
+
+set encoding utf8
+set grid
+set terminal png size 1024,768
+set title "FOR LOOP: Time dependance of the OpenMP threads count\ncompared with OpenMP automatic threads count (CPU's number).\nExecuting: `echo $PLOT_PROGRAM`"
+set key top right
+set xlabel "Threads count"
+set ylabel "Execution time [s]"
+set output "`echo $PLOT_GRAPH_FILE`"
+
+plot \
+`echo $PLOT_OPENMP_DEFAULT` title "Time for default OpenMP settings" smooth bezier with lines, \
+"`echo $PLOT_DATA_FILE`" using 1:2 title "Time depending on threads number" smooth bezier with lines
